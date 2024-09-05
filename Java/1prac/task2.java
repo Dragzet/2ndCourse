@@ -17,7 +17,12 @@ public class task2{
         System.out.println("Сумма: ");
         roubles = yuan * ROUBLES_PER_YUAN;
 
-        System.out.print(Math.round(roubles * 100.0) / 100.0);
+        if ((roubles % 1) != 0){
+            System.out.print((int)roubles + 1);
+        } else{
+            System.out.print((int)roubles);
+        }
+
 
         int lastNum = (int)(roubles - roubles % 1) % 10;
 
