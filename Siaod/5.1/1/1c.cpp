@@ -1,13 +1,13 @@
 #include <cstdlib>
 #include <iostream>
-#include <Windows.h>
+// #include <Windows.h>
 #include <bitset>
 
 using namespace std;
 
 int main(){
-    SetConsoleCP(CP_UTF8);
-    SetConsoleOutputCP(CP_UTF8);
+    // SetConsoleCP(CP_UTF8);
+    // SetConsoleOutputCP(CP_UTF8);
 
     unsigned int x = 255;
     const int n = sizeof(int) * 8;

@@ -12,8 +12,6 @@ public class Car {
         this.engineType = engineType;
     }
 
-
-
     public String getInsuranceNumber() {
         return insuranceNumber;
     }

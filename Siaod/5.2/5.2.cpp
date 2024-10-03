@@ -1,10 +1,12 @@
 ﻿#include <fstream>
 #include <string>
-#include <windows.h>
+//include <windows.h>
+#include <cstring>
 #include <set>
 #include <vector>
 #include <algorithm>
 #include <format>
+#include <string.h>
 #include <iostream>
 #include <random>
 #include <chrono>
@@ -18,8 +20,8 @@ struct card {
 
     card(int StudNumber, const char* group_in, const char* name_in)
         : StudNumber(StudNumber) {
-        strncpy_s(group, group_in, _TRUNCATE);
-        strncpy_s(name, name_in, _TRUNCATE);
+        strncpy(group, group_in, sizeof(group));
+        strncpy(name, name_in, sizeof(name));
     }
 
     card() = default;
@@ -132,7 +134,7 @@ cardSearch modifiedBinarySearch(cardSearch* table, int needKey, int position, in
 }
 
 int main() {
-    SetConsoleOutputCP(1251);
+    //SetConsoleOutputCP(1251);
     const char* fname = "file.txt";
 
     fstream fs(fname, ios::out | ios::binary);
@@ -152,6 +154,7 @@ int main() {
     }
     cout << "Last card: " << lastCard.toString() << endl;
     cout << string(120, '=') << endl;
+
     //Second ex
     int key = 0;
     cin >> key;
@@ -162,6 +165,7 @@ int main() {
     cout << "Found card: " + foundCard.toString() << endl;
     cout << format("In {:} seconds.\n", time.count());
     cout << string(120, '=') << endl;
+    
     //Third ex
     cardSearch* table = NULL;
     start = chrono::steady_clock::now();

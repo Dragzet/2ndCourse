@@ -4,18 +4,32 @@
 #include <chrono>
 #include <cmath>
 #include <bitset>
-#include <windows.h>
-#include <psapi.h>
+#include <iostream>
+#include <sys/resource.h>
+// #include <windows.h>
+// #include <psapi.h>
 
 using namespace std;
 
+// void printMemoryUsage() {
+//     PROCESS_MEMORY_COUNTERS_EX pmc;
+//     HANDLE hProcess = GetCurrentProcess();
+//     if (GetProcessMemoryInfo(hProcess, (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
+//         cout << "Memory usage: " << pmc.PrivateUsage / (1024 * 1024) << " MB" << endl;
+//     } else {
+//         cerr << "Failed to get memory usage." << endl;
+//     }
+// }
+
+
+
 void printMemoryUsage() {
-    PROCESS_MEMORY_COUNTERS_EX pmc;
-    HANDLE hProcess = GetCurrentProcess();
-    if (GetProcessMemoryInfo(hProcess, (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
-        cout << "Memory usage: " << pmc.PrivateUsage / (1024 * 1024) << " MB" << endl;
+    struct rusage usage;
+    if (getrusage(RUSAGE_SELF, &usage) == 0) {
+        std::cout << "Использование памяти: " << usage.ru_maxrss / 1024 / (usage.ru_maxrss / 1024) << " МB" << std::endl;
     } else {
-        cerr << "Failed to get memory usage." << endl;
+        std::cerr << "Ошибка при получении использования памяти" << std::endl;
+        return;
     }
 }
 
