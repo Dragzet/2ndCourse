@@ -36,7 +36,6 @@ vector<LZ78Pair> LZ78Encode(const wstring &input) {
     return encodedData;
 }
 
-// Функция для вывода результата кодирования
 void PrintEncodedData(const vector<LZ78Pair> &data) {
     for (const auto &pair : data) {
         wcout << L"(" << pair.index << L", " << pair.symbol << L")" << endl;
