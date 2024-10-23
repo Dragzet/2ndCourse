@@ -3,11 +3,11 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int[][] graph = {
-                {0, 1, 0, 0, 1},
-                {1, 0, 1, 0, 0},
+                {0, 4, 0, 0, 1},
+                {4, 0, 1, 0, 0},
                 {0, 1, 0, 1, 0},
                 {0, 0, 1, 0, 1},
-                {1, 0, 0, 1, 0}
+                {1, 0, 0, 0, 0}
         };
 
         BFS bfs = new BFS(graph);
